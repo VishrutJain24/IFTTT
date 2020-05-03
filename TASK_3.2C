@@ -1,0 +1,30 @@
+int led2 = D7; //LED on Argon 
+int PhotoResistor = A0; //where photo resistor is placed
+int value;  //for light intensity
+
+void setup() {
+  Particle.variable("value", &value, INT);  
+  pinMode(led2, OUTPUT);
+  pinMode(PhotoResistor, INPUT);
+
+}
+
+
+void loop()
+{
+    value = analogRead(PhotoResistor); //Read values through sensor
+ if (value < 15)                      //Condition
+ {
+     
+     digitalWrite(led2, LOW);
+      Particle.publish("OFF");
+ }
+     else
+     {
+          digitalWrite(led2, HIGH; 
+          Particle.publish("ON");
+     }
+     delay(100);
+    
+    
+ }
